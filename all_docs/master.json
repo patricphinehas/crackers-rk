@@ -1,0 +1,101 @@
+{
+  "steps": [
+    {
+      "phase": "Planning",
+      "tasks": [
+        "Identify target market and delivery regions",
+        "Check firework sales compliance and required licenses",
+        "Outline product categories (e.g., sparklers, rockets, combos, gift packs, eco-friendly)",
+        "List essential ecommerce features (cart, payment, reviews, testimonials, offers)"
+      ]
+    },
+    {
+      "phase": "Design & Blueprint",
+      "tasks": [
+        "Draft sitemap (Home, Categories, New Arrivals, Best Sellers, Offers, Product Detail, Cart, Checkout, Testimonials, FAQ, Contact)",
+        "Draw wireframes for homepage, product listing, product detail, cart, checkout",
+        "Define color palette, typography, and festive theme (e.g., gold, orange, blue, fun fonts)",
+        "Specify required images: product boxes, fireworks in use, banners, testimonials, brand logos"
+      ]
+    },
+    {
+      "phase": "Content Preparation",
+      "tasks": [
+        "Write SEO product titles and descriptions",
+        "Collect product and lifestyle images",
+        "Create banners and promotional visuals",
+        "Gather customer testimonials, reviews, ratings"
+      ]
+    },
+    {
+      "phase": "Tech Stack & Infrastructure",
+      "tasks": [
+        "Select frontend (e.g., Angular, React), backend (e.g., Node.js, Python), database (SQL/NoSQL)",
+        "Set up cloud hosting and SSL",
+        "Integrate payment gateways for cards, UPI, wallets",
+        "Configure email/SMS order notifications"
+      ]
+    },
+    {
+      "phase": "Development",
+      "tasks": [
+        "Build UI components: header, navigation, product grid, product card, category filter, cart, checkout",
+        "Implement account creation, login, order history",
+        "Add offer badges, discount price styles, review and testimonial blocks",
+        "Develop admin for products, orders, inventory, offers management",
+        "Ensure responsive/mobile-first design",
+        "Add accessibility, SEO meta tags, and analytics"
+      ]
+    },
+    {
+      "phase": "Testing",
+      "tasks": [
+        "Conduct device/browser compatibility testing",
+        "Test checkout payment flow and address input",
+        "Perform speed and mobile responsiveness checks",
+        "Check compliance, safety, and legal notices visibility"
+      ]
+    },
+    {
+      "phase": "Launch & Marketing",
+      "tasks": [
+        "Prepare and schedule festive offers and banners",
+        "Announce launch via social channels and email",
+        "Implement live customer support chat or FAQ"
+      ]
+    },
+    {
+      "phase": "Operations & Maintenance",
+      "tasks": [
+        "Monitor orders and update stock regularly",
+        "Rotate promotional banners for new offers/festivals",
+        "Collect and showcase new customer testimonials",
+        "Patch for tech/security updates as needed"
+      ]
+    }
+  ],
+  "images_to_use": [
+    "Product box images (angled, close-up)",
+    "Fireworks display in night sky",
+    "Festive banners and promotional graphics",
+    "Icons for categories (e.g. sparklers, rockets, gift packs)",
+    "Customer testimonial portraits and quotes",
+    "Brand logo badges and safety certificates"
+  ],
+  "sitemap": [
+    "Home",
+    "Shop/Categories",
+    "New Arrivals",
+    "Best Sellers",
+    "Offers/Sale",
+    "Gift Packs",
+    "Product Detail",
+    "Cart",
+    "Checkout",
+    "Testimonials",
+    "FAQ/Help",
+    "Contact Us",
+    "Legal/Privacy/Terms"
+  ],
+  "blueprint_reference": "See generated homepage wireframe for section layout and component placement."
+}

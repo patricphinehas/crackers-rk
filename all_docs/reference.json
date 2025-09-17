@@ -1,0 +1,92 @@
+{
+  "layout": {
+    "header": {
+      "logo": true,
+      "navigation_menu": ["Home", "Categories", "New Arrivals", "Best Sellers", "Offers", "Brands", "Testimonials", "Contact"],
+      "prominent_search_bar": true
+    },
+    "home_page": {
+      "hero_banner": {
+        "carousel": true,
+        "feature_offers": true,
+        "festival_theme": true
+      },
+      "quick_links": ["Shop By Category", "Shop By Brand", "Gift Boxes", "Bulk Orders"],
+      "trust_badges": ["Safety Certified", "Sivakasi Original", "Direct Factory Price", "Years of Experience"]
+    },
+    "sections": [
+      "Featured Products",
+      "New Arrivals",
+      "Best Sellers",
+      "Categories List",
+      "Special Offers",
+      "Gift Packs"
+    ],
+    "product_list": {
+      "card_style": true,
+      "discount_badges": true,
+      "old_price_strike": true,
+      "new_price_highlight": true
+    },
+    "product_detail": {
+      "large_images": true,
+      "price_breakdowns": true,
+      "add_to_cart_button": true,
+      "specifications_table": true,
+      "reviews_section": true
+    },
+    "testimonials": {
+      "block_style": true,
+      "location_tags": true
+    },
+    "footer": {
+      "contact_info": true,
+      "quick_links": true,
+      "social_icons": true,
+      "legal": ["Disclaimers", "Terms of Service", "Privacy Policy"]
+    }
+  },
+  "theme": {
+    "primary_colors": ["#ff671f", "#ffc107", "#fff", "#1976d2"],
+    "secondary_colors": ["#f5f5f5", "#263238"],
+    "festival_graphics": true,
+    "icons": ["fireworks", "gift", "star", "cart"]
+  },
+  "components": {
+    "user_account": {
+      "login_signup": true,
+      "order_history": true
+    },
+    "shopping_cart": {
+      "floating_icon": true,
+      "item_count_badge": true,
+      "mini_cart_dropdown": true
+    },
+    "offers_promos": {
+      "global_announcement_bar": true,
+      "promo_code_box": true,
+      "bulk_discount_promos": true
+    },
+    "video_section": {
+      "product_demo_videos": true
+    }
+  },
+  "special_features": {
+    "monthly_fund_chit_scheme": true,
+    "custom_gift_box_builder": true,
+    "bulk_order_quote_request": true,
+    "discount_scheme_display": true
+  },
+  "ux": {
+    "mobile_responsive": true,
+    "accessible_navigation": true,
+    "animated_elements": ["banners", "category cards"],
+    "fast_checkout": true
+  },
+  "content": {
+    "seo_keywords": ["Sivakasi Crackers", "Buy Crackers Online", "Diwali Fireworks", "Discount Crackers"],
+    "client_testimonials": true,
+    "brand_story": true,
+    "faq_section": true
+  }
+}

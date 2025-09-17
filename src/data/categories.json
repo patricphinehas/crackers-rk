@@ -1,0 +1,44 @@
+[
+  { 
+    "id": 1, 
+    "name": "Sparklers", 
+    "description": "Hand-held fireworks that emit colored flames, sparks, and other effects.", 
+    "icon": "✨", 
+    "path": "sparklers"
+  },
+  { 
+    "id": 2, 
+    "name": "Rockets & Aerial Fireworks", 
+    "description": "Fireworks that launch into the air and explode with various effects.", 
+    "icon": "🚀", 
+    "path": "aerial-fireworks"
+  },
+  { 
+    "id": 3, 
+    "name": "Chakkars & Spinners", 
+    "description": "Ground spinners that rotate and emit colorful sparks.", 
+    "icon": "🔄", 
+    "path": "chakkars-spinners"
+  },
+  { 
+    "id": 4, 
+    "name": "Flower Pots & Fountains", 
+    "description": "Stationary fireworks that emit showers of sparks.", 
+    "icon": "🌋", 
+    "path": "flower-pots-fountains"
+  },
+  { 
+    "id": 5, 
+    "name": "Sound Crackers", 
+    "description": "Fireworks that produce loud sounds and bangs.", 
+    "icon": "💥", 
+    "path": "sound-crackers"
+  },
+  { 
+    "id": 6, 
+    "name": "Gift Packs & Novelties", 
+    "description": "Special assortments and unique fireworks.", 
+    "icon": "🎁", 
+    "path": "gift-packs-novelties"
+  }
+]

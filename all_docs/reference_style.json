@@ -1,0 +1,61 @@
+{
+  "color_palette": {
+    "primary": ["#ff9900", "#ffc107", "#ff5722"],
+    "accent": ["#0288d1", "#388e3c"],
+    "background": ["#ffffff", "#fafafa"],
+    "highlight": ["#e65100", "#fbc02d"]
+  },
+  "typography": {
+    "font_family": ["'Roboto', 'Arial', sans-serif"],
+    "heading_style": "Bold, UPPERCASE or Capitalized, distinct color",
+    "body_style": "Regular weight, dark on light background",
+    "prices": "Large, color for discount. Strikethrough for old price, bold highlight for new price"
+  },
+  "buttons": {
+    "style": "Rounded corners, bright accent fill, hover transitions",
+    "primary_color": "#ff9900",
+    "secondary_color": "#0288d1",
+    "font_weight": "bold"
+  },
+  "product_cards": {
+    "box_shadow": true,
+    "border_radius": "8px",
+    "image_at_top": true,
+    "price_pill": "badge with discount color",
+    "quick_add_button": true,
+    "compare_button": false
+  },
+  "navigation": {
+    "header_fixed": true,
+    "menu_alignment": "center or right",
+    "mega_menu": true,
+    "search_in_nav": true
+  },
+  "layout": {
+    "max_width": "1200px",
+    "section_spacing": "32px above and below",
+    "section_backgrounds": "alternate white/lightgray",
+    "feature_sections": ["Hero carousel", "Grid cards", "Testimonial slider"],
+    "footer": "multi-column, dark or muted background"
+  },
+  "icons_graphics": {
+    "theme": ["fireworks", "gift boxes", "festival motifs", "family celebration"],
+    "svg_preferred": true,
+    "use_of_brand_logos": true
+  },
+  "media": {
+    "feature_videos": true,
+    "responsive_images": true,
+    "banner_images": "festive, vibrant, high contrast"
+  },
+  "responsive": {
+    "mobile_first": true,
+    "grid_breakpoints": [375, 768, 1150],
+    "tap_targets_large": true
+  },
+  "animation": {
+    "hover_card_lift": true,
+    "button_hover_glow": true,
+    "carousel_slide": true
+  }
+}
