@@ -88,13 +88,13 @@ const AllInOnePage = () => {
               <PriceContainer>
                 {product.discount > 0 ? (
                   <>
-                    <OriginalPrice>${product.price.toFixed(2)}</OriginalPrice>
+                    <OriginalPrice>₹{product.price.toFixed(2)}</OriginalPrice>
                     <CurrentPrice>
-                      ${(product.price * (1 - product.discount / 100)).toFixed(2)}
+                      ₹{(product.price * (1 - product.discount / 100)).toFixed(2)}
                     </CurrentPrice>
                   </>
                 ) : (
-                  <CurrentPrice>${product.price.toFixed(2)}</CurrentPrice>
+                  <CurrentPrice>₹{product.price.toFixed(2)}</CurrentPrice>
                 )}
               </PriceContainer>
               

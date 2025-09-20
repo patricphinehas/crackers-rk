@@ -41,7 +41,7 @@ const ContactPage = () => {
             <ContactIcon>✉️</ContactIcon>
             <div>
               <h3>Email</h3>
-              <p>info@crackersrk.com</p>
+              <p>info@premiumcrackers.com</p>
             </div>
           </ContactDetail>
           

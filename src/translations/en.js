@@ -1,7 +1,7 @@
 // English translations
 const en = {
   // Common
-  'app.name': 'RK Crackers',
+  'app.name': 'Premium Crackers',
   'app.tagline': 'Premium Quality Fireworks',
   
   // All-in-One Page
@@ -21,13 +21,13 @@ const en = {
   'nav.contact': 'Contact',
   
   // Home Page
-  'home.hero.title': 'Celebrate with RK Crackers',
+  'home.hero.title': 'Celebrate with Premium Fireworks',
   'home.hero.description': 'Premium quality fireworks for all your celebrations',
   'home.hero.shopNow': 'Shop Now',
   'home.featured.title': 'Featured Products',
   'home.categories.title': 'Browse Categories',
-  'home.about.title': 'About RK Crackers',
-  'home.about.content': 'RK Crackers is a premium fireworks brand offering high-quality products for all your celebrations. We source our products directly from Sivakasi, ensuring the best quality and safety standards.',
+  'home.about.title': 'About Us',
+  'home.about.content': 'We are a premium fireworks company offering high-quality products for all your celebrations. We source our products directly from trusted manufacturers, ensuring the best quality and safety standards.',
   'home.featuredProducts': 'Featured Products',
   'home.quickLinks.categories': 'Categories',
   'home.quickLinks.newArrivals': 'New Arrivals',
@@ -67,6 +67,12 @@ const en = {
   'product.notFound.title': 'Product Not Found',
   'product.notFound.message': "Sorry, the product you're looking for doesn't exist.",
   'product.notFound.home': 'Return to Home',
+  'product.safety.adultSupervision': 'Adult supervision required',
+  'product.safety.keepAway': 'Keep away from children',
+  'product.safety.openAreas': 'Use only in open areas',
+  'product.safety.waterNearby': 'Keep water nearby',
+  'product.safety.readInstructions': 'Read all instructions before use',
+  'product.safety.storeCool': 'Store in cool, dry place',
   
   // Cart Page
   'cart.title': 'Your Shopping Cart',
@@ -105,11 +111,11 @@ const en = {
   'footer.contact': 'Contact Us',
   'footer.terms': 'Terms & Conditions',
   'footer.privacy': 'Privacy Policy',
-  'footer.copyright': '© {year} RK Crackers. All rights reserved.',
-  'footer.contactUs': 'Contact Us',
-  'footer.address': '123 Fireworks Street, Sivakasi, Tamil Nadu, India',
+  'footer.copyright': '© {year} Premium Crackers. All rights reserved.',
   'footer.phone': '+91 98765 43210',
-  'footer.email': 'info@crackersrk.com',
+  'footer.address': '123 Fireworks Street, Tamil Nadu, India',
+  'footer.hours': 'Mon-Sat: 9AM-6PM',
+  'footer.email': 'info@premiumcrackers.com',
   'footer.quickLinks.title': 'Quick Links',
   'footer.quickLinks.home': 'Home',
   'footer.quickLinks.categories': 'Categories',

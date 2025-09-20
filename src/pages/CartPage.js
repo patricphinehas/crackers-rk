@@ -47,7 +47,7 @@ const CartPage = () => {
                     </ItemDetails>
                   </ItemInfo>
                   
-                  <ItemPrice flex={1}>${item.price.toFixed(2)}</ItemPrice>
+                  <ItemPrice flex={1}>₹{item.price.toFixed(2)}</ItemPrice>
                   
                   <ItemQuantity flex={2}>
                     <QuantityControls>
@@ -58,7 +58,7 @@ const CartPage = () => {
                   </ItemQuantity>
                   
                   <ItemTotal flex={1}>
-                    ${(item.price * item.quantity).toFixed(2)}
+                    ₹{(item.price * item.quantity).toFixed(2)}
                   </ItemTotal>
                   
                   <ItemActions flex={1}>
@@ -75,7 +75,7 @@ const CartPage = () => {
               
               <SummaryRow>
                 <span>{t('cart.subtotal')}</span>
-                <span>${cart.totalPrice.toFixed(2)}</span>
+                <span>₹{cart.totalPrice.toFixed(2)}</span>
               </SummaryRow>
               
               <SummaryRow>
@@ -85,12 +85,12 @@ const CartPage = () => {
               
               <SummaryRow>
                 <span>{t('cart.tax')}</span>
-                <span>${(cart.totalPrice * 0.08).toFixed(2)}</span>
+                <span>₹{(cart.totalPrice * 0.08).toFixed(2)}</span>
               </SummaryRow>
               
               <SummaryTotal>
                 <span>{t('cart.total')}</span>
-                <span>${(cart.totalPrice + cart.totalPrice * 0.08).toFixed(2)}</span>
+                <span>₹{(cart.totalPrice + cart.totalPrice * 0.08).toFixed(2)}</span>
               </SummaryTotal>
               
               <CheckoutButton onClick={handleCheckout}>

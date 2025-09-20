@@ -16,7 +16,7 @@ const ShippingPolicyPage = () => {
       <PolicySection>
         <h2>Shipping & Delivery</h2>
         <p>
-          At RK Crackers, we are committed to delivering your fireworks safely and efficiently. 
+          We are committed to delivering your fireworks safely and efficiently. 
           Please review our shipping policies below to understand our delivery process.
         </p>
 
@@ -120,7 +120,7 @@ const ShippingPolicyPage = () => {
             please contact our customer service team:
           </p>
           <ContactInfo>
-            <p><strong>Email:</strong> shipping@crackersrk.com</p>
+            <p><strong>Email:</strong> shipping@premiumcrackers.com</p>
             <p><strong>Phone:</strong> +91 8144 182 182</p>
             <p><strong>Hours:</strong> Monday - Saturday, 9:00 AM - 6:00 PM IST</p>
           </ContactInfo>

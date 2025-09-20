@@ -16,7 +16,7 @@ const ReturnsRefundsPage = () => {
       <PolicySection>
         <h2>Returns & Refunds</h2>
         <p>
-          At RK Crackers, we strive to ensure your complete satisfaction with every purchase. 
+          We strive to ensure your complete satisfaction with every purchase. 
           Please review our returns and refunds policy to understand our procedures.
         </p>
 
@@ -134,7 +134,7 @@ const ReturnsRefundsPage = () => {
             If you have any questions about our returns and refunds policy, please contact our customer service team:
           </p>
           <ContactInfo>
-            <p><strong>Email:</strong> returns@crackersrk.com</p>
+            <p><strong>Email:</strong> returns@premiumcrackers.com</p>
             <p><strong>Phone:</strong> +91 8144 182 182</p>
             <p><strong>Hours:</strong> Monday - Saturday, 9:00 AM - 6:00 PM IST</p>
           </ContactInfo>

@@ -16,8 +16,8 @@ const TermsOfServicePage = () => {
       <PolicySection>
         <h2>Terms and Conditions</h2>
         <p>
-          Welcome to RK Crackers. These Terms of Service ("Terms") govern your use of our website, services, and products. 
-          By accessing our website or purchasing our products, you agree to be bound by these Terms.
+        Welcome to our fireworks store. These Terms of Service ("Terms") govern your use of our website, services, and products.
+        By accessing our website or purchasing our products, you agree to be bound by these Terms.
         </p>
 
         <PolicyBlock>
@@ -122,7 +122,7 @@ const TermsOfServicePage = () => {
         <PolicyBlock>
           <h3>8. Intellectual Property</h3>
           <p>
-            All content on our website, including text, graphics, logos, images, product descriptions, and software, is the property of RK Crackers or our content suppliers and is protected by copyright, trademark, and other intellectual property laws.
+            All content on our website, including text, graphics, logos, images, product descriptions, and software, is the property of our company or our content suppliers and is protected by copyright, trademark, and other intellectual property laws.
           </p>
           <p>
             You may not reproduce, distribute, display, sell, lease, transmit, create derivative works from, translate, modify, reverse-engineer, disassemble, decompile, or otherwise exploit our website or any portion of it without our explicit written consent.
@@ -149,7 +149,7 @@ const TermsOfServicePage = () => {
         <PolicyBlock>
           <h3>10. Limitation of Liability</h3>
           <p>
-            To the fullest extent permitted by law, RK Crackers shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, use, goodwill, or other intangible losses, resulting from:
+            To the fullest extent permitted by law, our company shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, use, goodwill, or other intangible losses, resulting from:
           </p>
           <ul>
             <li>Your access to or use of or inability to access or use our services</li>
@@ -165,7 +165,7 @@ const TermsOfServicePage = () => {
         <PolicyBlock>
           <h3>11. Indemnification</h3>
           <p>
-            You agree to indemnify, defend, and hold harmless RK Crackers, its officers, directors, employees, agents, and suppliers from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of our services.
+            You agree to indemnify, defend, and hold harmless our company, its officers, directors, employees, agents, and suppliers from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of our services.
           </p>
         </PolicyBlock>
 
@@ -192,7 +192,7 @@ const TermsOfServicePage = () => {
             If you have any questions about these Terms of Service, please contact us:
           </p>
           <ContactInfo>
-            <p><strong>Email:</strong> legal@crackersrk.com</p>
+            <p><strong>Email:</strong> legal@premiumcrackers.com</p>
             <p><strong>Phone:</strong> +91 8144 182 182</p>
             <p><strong>Address:</strong> Peacock Crackers, Standard Firework Factory Area, Sivakasi, Tamil Nadu 626189, India</p>
           </ContactInfo>

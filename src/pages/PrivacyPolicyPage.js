@@ -84,7 +84,7 @@ const PrivacyPolicyPage = () => {
       <PolicyHeader>
         <PolicyTitle>{t('footer.legal.privacyPolicy')}</PolicyTitle>
         <PolicyDescription>
-          This Privacy Policy describes how RK Crackers collects, uses, and shares your personal information when you visit our website, make purchases, or interact with us.
+          This Privacy Policy describes how we collect, use, and share your personal information when you visit our website, make purchases, or interact with us.
         </PolicyDescription>
       </PolicyHeader>
 
@@ -189,7 +189,7 @@ const PrivacyPolicyPage = () => {
       <ContactSection>
         <ContactTitle>Contact Us</ContactTitle>
         <ContactInfo>If you have any questions about our Privacy Policy, please contact us:</ContactInfo>
-        <ContactInfo>Email: privacy@rkcrackers.com</ContactInfo>
+        <ContactInfo>Email: privacy@premiumcrackers.com</ContactInfo>
         <ContactInfo>Phone: +91 98765 43210</ContactInfo>
         <ContactInfo>Address: 123 Fireworks Street, Sivakasi, Tamil Nadu, India</ContactInfo>
         <ContactInfo>

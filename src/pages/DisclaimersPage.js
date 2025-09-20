@@ -16,15 +16,14 @@ const DisclaimersPage = () => {
       <PolicySection>
         <h2>Product Disclaimers</h2>
         <p>
-          Please read the following disclaimers carefully before purchasing or using any products from RK Crackers. 
-          These disclaimers outline important information regarding the use, risks, and limitations of our products.
+          Please read the following disclaimers carefully before purchasing or using any products from our fireworks store.
         </p>
 
         <PolicyBlock>
           <h3>General Product Disclaimer</h3>
           <p>
             Fireworks are inherently dangerous products that contain explosive materials and are designed to burn, emit sounds, 
-            and create visual effects. RK Crackers provides these products for entertainment purposes only, with the understanding 
+            and create visual effects. Our company provides these products for entertainment purposes only, with the understanding 
             that the user accepts all risks associated with their use.
           </p>
           <p>
@@ -36,7 +35,7 @@ const DisclaimersPage = () => {
         <PolicyBlock>
           <h3>Safety Disclaimer</h3>
           <p>
-            RK Crackers cannot guarantee the safety of individuals using our products. The safe use of fireworks depends 
+            Our company cannot guarantee the safety of individuals using our products. The safe use of fireworks depends 
             entirely on proper handling, storage, and usage according to instructions. Misuse of fireworks can result in 
             serious injury, death, or property damage.
           </p>
@@ -81,7 +80,7 @@ const DisclaimersPage = () => {
             <li>Adhere to seasonal restrictions or bans that may be in place</li>
           </ul>
           <p>
-            RK Crackers is not responsible for any legal consequences resulting from the illegal purchase or use of our products.
+            Our company is not responsible for any legal consequences resulting from the illegal purchase or use of our products.
           </p>
         </PolicyBlock>
 
@@ -105,7 +104,7 @@ const DisclaimersPage = () => {
         <PolicyBlock>
           <h3>Limitation of Liability</h3>
           <p>
-            To the fullest extent permitted by law, RK Crackers disclaims all liability for any injuries, damages, or losses 
+            To the fullest extent permitted by law, our company disclaims all liability for any injuries, damages, or losses 
             of any kind (including but not limited to direct, indirect, incidental, consequential, or punitive damages) arising 
             from the purchase, possession, or use of our products.
           </p>
@@ -117,7 +116,7 @@ const DisclaimersPage = () => {
         <PolicyBlock>
           <h3>Storage Disclaimer</h3>
           <p>
-            Proper storage of fireworks is essential for safety and product performance. RK Crackers is not responsible for 
+            Proper storage of fireworks is essential for safety and product performance. Our company is not responsible for 
             product failure, accidents, or injuries resulting from improper storage. All fireworks should be:
           </p>
           <ul>
@@ -135,7 +134,7 @@ const DisclaimersPage = () => {
             If you have any questions about these disclaimers, please contact our customer service team:
           </p>
           <ContactInfo>
-            <p><strong>Email:</strong> info@crackersrk.com</p>
+            <p><strong>Email:</strong> info@premiumcrackers.com</p>
             <p><strong>Phone:</strong> +91 8144 182 182</p>
             <p><strong>Hours:</strong> Monday - Saturday, 9:00 AM - 6:00 PM IST</p>
           </ContactInfo>

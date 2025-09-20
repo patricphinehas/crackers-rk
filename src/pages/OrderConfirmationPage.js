@@ -30,7 +30,7 @@ const OrderConfirmationPage = () => {
     document.body.innerHTML = printContent.innerHTML;
     window.print();
     document.body.innerHTML = originalContents;
-    window.location.reload(); // Reload to restore React app
+    window.location.reload(); // Reload to restore Crackers RK
   };
   
   const handleReturnHome = () => {
@@ -59,7 +59,7 @@ const OrderConfirmationPage = () => {
         <PrintableReceipt ref={printRef}>
           <ReceiptHeader>
             <h2>Order Receipt</h2>
-            <p>RK Crackers</p>
+            <p>Premium Crackers</p>
           </ReceiptHeader>
           
           <OrderDetails>
@@ -96,8 +96,8 @@ const OrderConfirmationPage = () => {
                 <tr key={index}>
                   <td>{item.name}</td>
                   <td>{item.quantity}</td>
-                  <td>${item.price.toFixed(2)}</td>
-                  <td>${(item.price * item.quantity).toFixed(2)}</td>
+                  <td>₹{item.price.toFixed(2)}</td>
+                  <td>₹{(item.price * item.quantity).toFixed(2)}</td>
                 </tr>
               ))}
             </tbody>
@@ -106,21 +106,21 @@ const OrderConfirmationPage = () => {
           <OrderSummary>
             <SummaryRow>
               <span>Subtotal:</span>
-              <span>${(totalAmount * 0.92).toFixed(2)}</span>
+              <span>₹{(totalAmount * 0.92).toFixed(2)}</span>
             </SummaryRow>
             <SummaryRow>
               <span>Tax (8%):</span>
-              <span>${(totalAmount * 0.08).toFixed(2)}</span>
+              <span>₹{(totalAmount * 0.08).toFixed(2)}</span>
             </SummaryRow>
             <SummaryRow total>
               <span>Total:</span>
-              <span>${totalAmount.toFixed(2)}</span>
+              <span>₹{totalAmount.toFixed(2)}</span>
             </SummaryRow>
           </OrderSummary>
           
           <ThankYouMessage>
-            <p>Thank you for shopping with RK Crackers!</p>
-            <p>For any questions about your order, please contact us at support@rkcrackers.com</p>
+            <p>Thank you for shopping with us!</p>
+            <p>For any questions about your order, please contact us at support@premiumcrackers.com</p>
           </ThankYouMessage>
         </PrintableReceipt>
       </OrderConfirmation>
