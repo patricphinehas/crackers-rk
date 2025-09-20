@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/crackers-dist/static/css/main.e1010b53.css",
+    "main.js": "/crackers-dist/static/js/main.23df206c.js",
+    "static/js/453.7b2805d2.chunk.js": "/crackers-dist/static/js/453.7b2805d2.chunk.js",
+    "index.html": "/crackers-dist/index.html",
+    "main.e1010b53.css.map": "/crackers-dist/static/css/main.e1010b53.css.map",
+    "main.23df206c.js.map": "/crackers-dist/static/js/main.23df206c.js.map",
+    "453.7b2805d2.chunk.js.map": "/crackers-dist/static/js/453.7b2805d2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e1010b53.css",
+    "static/js/main.23df206c.js"
+  ]
+}
