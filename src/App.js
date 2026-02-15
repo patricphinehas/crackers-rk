@@ -32,7 +32,7 @@ import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/crackers-rk">
       <AuthProvider>
         <LanguageProvider>
           <CartProvider>
