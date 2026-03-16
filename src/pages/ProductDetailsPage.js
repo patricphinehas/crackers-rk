@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Star, AlertTriangle } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import products from '../data/products';
 import { getCategoryPathMapping } from '../data/dataService';
@@ -32,9 +33,9 @@ const ProductDetailsPage = () => {
   if (!product) {
     return (
       <ErrorContainer>
-        <h2>{t('product.notFound')}</h2>
-        <p>{t('product.notFoundDesc')}</p>
-        <Link to="/">{t('common.returnHome')}</Link>
+        <h2>{t('product.notFound.title')}</h2>
+        <p>{t('product.notFound.message')}</p>
+        <Link to="/">{t('product.notFound.home')}</Link>
       </ErrorContainer>
     );
   }
@@ -71,9 +72,9 @@ const ProductDetailsPage = () => {
           
           <Rating>
             {Array(5).fill().map((_, i) => (
-              <Star key={i} filled={i < Math.floor(product.rating)}>
-                ★
-              </Star>
+              <StarWrapper key={i} filled={i < Math.floor(product.rating)}>
+                <Star size={18} fill={i < Math.floor(product.rating) ? 'currentColor' : 'none'} />
+              </StarWrapper>
             ))}
             <span>({product.rating}) - {product.reviews} reviews</span>
           </Rating>
@@ -121,7 +122,7 @@ const ProductDetailsPage = () => {
           
           {addedToCart && (
             <SuccessMessage>
-              {t('product.addedToCartSuccess')}
+              {t('product.added')}
             </SuccessMessage>
           )}
         </ProductInfo>
@@ -141,14 +142,14 @@ const ProductDetailsPage = () => {
         </FeaturesContainer>
         
         <SafetyInstructions>
-          <h3>{t('product.safetyInstructions')}</h3>
+          <h3>{t('product.safety')}</h3>
           <SafetyList>
-            <SafetyItem>{t('product.safety.adultSupervision')}</SafetyItem>
-            <SafetyItem>{t('product.safety.keepAway')}</SafetyItem>
-            <SafetyItem>{t('product.safety.openAreas')}</SafetyItem>
-            <SafetyItem>{t('product.safety.waterNearby')}</SafetyItem>
-            <SafetyItem>{t('product.safety.readInstructions')}</SafetyItem>
-            <SafetyItem>{t('product.safety.storeCool')}</SafetyItem>
+            <SafetyItem><AlertTriangle size={16} /><span>{t('product.safety.adultSupervision')}</span></SafetyItem>
+            <SafetyItem><AlertTriangle size={16} /><span>{t('product.safety.keepAway')}</span></SafetyItem>
+            <SafetyItem><AlertTriangle size={16} /><span>{t('product.safety.openAreas')}</span></SafetyItem>
+            <SafetyItem><AlertTriangle size={16} /><span>{t('product.safety.waterNearby')}</span></SafetyItem>
+            <SafetyItem><AlertTriangle size={16} /><span>{t('product.safety.readInstructions')}</span></SafetyItem>
+            <SafetyItem><AlertTriangle size={16} /><span>{t('product.safety.storeCool')}</span></SafetyItem>
           </SafetyList>
         </SafetyInstructions>
         
@@ -256,9 +257,9 @@ const Rating = styled.div`
   }
 `;
 
-const Star = styled.span`
+const StarWrapper = styled.span`
+  display: inline-flex;
   color: ${props => props.filled ? '#FFD700' : '#e0e0e0'};
-  font-size: 1.2rem;
 `;
 
 const Price = styled.div`
@@ -410,14 +411,13 @@ const SafetyList = styled.ul`
 `;
 
 const SafetyItem = styled.li`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-bottom: 0.5rem;
-  padding-left: 1.5rem;
-  position: relative;
-  
-  &:before {
-    content: '⚠️';
-    position: absolute;
-    left: 0;
+
+  svg {
+    flex-shrink: 0;
     color: #ffc107;
   }
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Shield, CheckCircle, DollarSign, Star } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import products from '../data/products';
 import { useTranslation } from '../utils/translate';
@@ -146,10 +147,10 @@ const HomePage = () => {
   
   // Trust badges data
   const trustBadges = [
-    { name: t('home.trustBadges.safety'), icon: "🛡️" },
-    { name: t('home.trustBadges.authentic'), icon: "✅" },
-    { name: t('home.trustBadges.pricing'), icon: "💰" },
-    { name: t('home.trustBadges.experience'), icon: "⭐" },
+    { name: t('home.trustBadges.safety'), Icon: Shield },
+    { name: t('home.trustBadges.authentic'), Icon: CheckCircle },
+    { name: t('home.trustBadges.pricing'), Icon: DollarSign },
+    { name: t('home.trustBadges.experience'), Icon: Star },
   ];
   
   // Featured products (showing first 4 products)
@@ -179,7 +180,9 @@ const HomePage = () => {
         <TrustBadgesContainer>
           {trustBadges.map((badge, index) => (
             <TrustBadge key={index}>
-              <div style={{ fontSize: '2rem' }}>{badge.icon}</div>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <badge.Icon size={32} strokeWidth={1.5} />
+              </div>
               <h4>{badge.name}</h4>
             </TrustBadge>
           ))}

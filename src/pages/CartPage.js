@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useTranslation } from '../utils/translate';
 
@@ -62,8 +63,8 @@ const CartPage = () => {
                   </ItemTotal>
                   
                   <ItemActions flex={1}>
-                    <DeleteButton onClick={() => deleteFromCart(item)}>
-                      <span>×</span>
+                    <DeleteButton onClick={() => deleteFromCart(item)} aria-label={t('cart.remove')}>
+                      <X size={18} />
                     </DeleteButton>
                   </ItemActions>
                 </CartItem>

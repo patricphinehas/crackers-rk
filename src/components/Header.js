@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Search, Menu } from 'lucide-react';
 import CartIcon from './CartIcon';
 import LanguageSelector from './LanguageSelector';
 import { useTranslation } from '../utils/translate';
@@ -124,7 +125,7 @@ const Header = () => {
           
           <SearchBar>
             <input type="text" placeholder="Search products..." />
-            <button>🔍</button>
+            <button type="button" aria-label="Search"><Search size={20} /></button>
           </SearchBar>
         </Navigation>
         
@@ -133,7 +134,7 @@ const Header = () => {
           <CartIcon />
         </UserActions>
         
-        <MobileMenuButton>☰</MobileMenuButton>
+        <MobileMenuButton type="button" aria-label="Menu"><Menu size={24} /></MobileMenuButton>
       </HeaderContent>
     </HeaderContainer>
   );
