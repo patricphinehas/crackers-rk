@@ -385,29 +385,29 @@ const CheckoutPage = () => {
                   <ItemName>{item.name}</ItemName>
                   <ItemQuantity>Qty: {item.quantity}</ItemQuantity>
                 </ItemDetails>
-                <ItemPrice>${(item.price * item.quantity).toFixed(2)}</ItemPrice>
+                <ItemPrice>₹{(item.price * item.quantity).toLocaleString('en-IN')}</ItemPrice>
               </OrderItem>
             ))}
           </OrderItems>
-          
+
           <SummaryRow>
             <span>Subtotal</span>
-            <span>${cart.totalPrice.toFixed(2)}</span>
+            <span>₹{cart.totalPrice.toLocaleString('en-IN')}</span>
           </SummaryRow>
-          
+
           <SummaryRow>
             <span>Shipping</span>
             <span>Free</span>
           </SummaryRow>
-          
+
           <SummaryRow>
-            <span>Tax</span>
-            <span>${(cart.totalPrice * 0.08).toFixed(2)}</span>
+            <span>Tax (GST 28%)</span>
+            <span>₹{Math.round(cart.totalPrice * 0.28).toLocaleString('en-IN')}</span>
           </SummaryRow>
-          
+
           <SummaryTotal>
             <span>Total</span>
-            <span>${(cart.totalPrice + cart.totalPrice * 0.08).toFixed(2)}</span>
+            <span>₹{Math.round(cart.totalPrice + cart.totalPrice * 0.28).toLocaleString('en-IN')}</span>
           </SummaryTotal>
         </OrderSummary>
       </CheckoutContainer>

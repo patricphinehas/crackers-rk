@@ -48,7 +48,7 @@ const CartPage = () => {
                     </ItemDetails>
                   </ItemInfo>
                   
-                  <ItemPrice flex={1}>${item.price.toFixed(2)}</ItemPrice>
+                  <ItemPrice flex={1}>₹{item.price.toLocaleString('en-IN')}</ItemPrice>
                   
                   <ItemQuantity flex={2}>
                     <QuantityControls>
@@ -59,7 +59,7 @@ const CartPage = () => {
                   </ItemQuantity>
                   
                   <ItemTotal flex={1}>
-                    ${(item.price * item.quantity).toFixed(2)}
+                    ₹{(item.price * item.quantity).toLocaleString('en-IN')}
                   </ItemTotal>
                   
                   <ItemActions flex={1}>
@@ -76,22 +76,22 @@ const CartPage = () => {
               
               <SummaryRow>
                 <span>{t('cart.subtotal')}</span>
-                <span>${cart.totalPrice.toFixed(2)}</span>
+                <span>₹{cart.totalPrice.toLocaleString('en-IN')}</span>
               </SummaryRow>
-              
+
               <SummaryRow>
                 <span>{t('cart.shipping')}</span>
                 <span>{t('cart.free')}</span>
               </SummaryRow>
-              
+
               <SummaryRow>
-                <span>{t('cart.tax')}</span>
-                <span>${(cart.totalPrice * 0.08).toFixed(2)}</span>
+                <span>{t('cart.tax')} (GST 28%)</span>
+                <span>₹{Math.round(cart.totalPrice * 0.28).toLocaleString('en-IN')}</span>
               </SummaryRow>
-              
+
               <SummaryTotal>
                 <span>{t('cart.total')}</span>
-                <span>${(cart.totalPrice + cart.totalPrice * 0.08).toFixed(2)}</span>
+                <span>₹{Math.round(cart.totalPrice + cart.totalPrice * 0.28).toLocaleString('en-IN')}</span>
               </SummaryTotal>
               
               <CheckoutButton onClick={handleCheckout}>

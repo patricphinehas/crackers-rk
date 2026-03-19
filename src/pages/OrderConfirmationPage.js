@@ -99,8 +99,8 @@ const OrderConfirmationPage = () => {
                 <tr key={index}>
                   <td>{item.name}</td>
                   <td>{item.quantity}</td>
-                  <td>${item.price.toFixed(2)}</td>
-                  <td>${(item.price * item.quantity).toFixed(2)}</td>
+                  <td>₹{item.price.toLocaleString('en-IN')}</td>
+                  <td>₹{(item.price * item.quantity).toLocaleString('en-IN')}</td>
                 </tr>
               ))}
             </tbody>
@@ -109,15 +109,15 @@ const OrderConfirmationPage = () => {
           <OrderSummary>
             <SummaryRow>
               <span>{t('order.subtotal')}</span>
-              <span>${(totalAmount * 0.92).toFixed(2)}</span>
+              <span>₹{Math.round(totalAmount / 1.28).toLocaleString('en-IN')}</span>
             </SummaryRow>
             <SummaryRow>
-              <span>{t('order.tax')}</span>
-              <span>${(totalAmount * 0.08).toFixed(2)}</span>
+              <span>{t('order.tax')} (GST 28%)</span>
+              <span>₹{Math.round(totalAmount - totalAmount / 1.28).toLocaleString('en-IN')}</span>
             </SummaryRow>
             <SummaryRow total>
               <span>{t('order.grandTotal')}</span>
-              <span>${totalAmount.toFixed(2)}</span>
+              <span>₹{totalAmount.toLocaleString('en-IN')}</span>
             </SummaryRow>
           </OrderSummary>
 

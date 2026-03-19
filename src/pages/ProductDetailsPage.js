@@ -79,7 +79,7 @@ const ProductDetailsPage = () => {
             <span>({product.rating}) - {product.reviews} reviews</span>
           </Rating>
           
-          <Price>${product.price.toFixed(2)}</Price>
+          <Price>₹{product.price.toLocaleString('en-IN')}</Price>
           
           <Description>{product.description}</Description>
           
@@ -177,7 +177,7 @@ const ProductDetailsPage = () => {
                 <Link to={`/product/${relatedProduct.id}`}>
                   <RelatedProductImage src={relatedProduct.image} alt={relatedProduct.name} />
                   <RelatedProductName>{relatedProduct.name}</RelatedProductName>
-                  <RelatedProductPrice>${relatedProduct.price.toFixed(2)}</RelatedProductPrice>
+                  <RelatedProductPrice>₹{relatedProduct.price.toLocaleString('en-IN')}</RelatedProductPrice>
                 </Link>
                 <CategoryLink to={`/categories/${getCategoryPathFromName(relatedProduct.category)}`}>
                   {relatedProduct.category}
