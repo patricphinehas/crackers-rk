@@ -1,7 +1,7 @@
 // English translations
 const en = {
   // Common
-  'app.name': 'RK Crackers',
+  'app.name': 'RK Krackers',
   'app.tagline': 'Premium Quality Fireworks',
   
   // All-in-One Page
@@ -21,13 +21,13 @@ const en = {
   'nav.contact': 'Contact',
   
   // Home Page
-  'home.hero.title': 'Celebrate with RK Crackers',
+  'home.hero.title': 'Celebrate with RK Krackers',
   'home.hero.description': 'Premium quality fireworks for all your celebrations',
   'home.hero.shopNow': 'Shop Now',
   'home.featured.title': 'Featured Products',
   'home.categories.title': 'Browse Categories',
-  'home.about.title': 'About RK Crackers',
-  'home.about.content': 'RK Crackers is a premium fireworks brand offering high-quality products for all your celebrations. We source our products directly from Sivakasi, ensuring the best quality and safety standards.',
+  'home.about.title': 'About RK Krackers',
+  'home.about.content': 'RK Krackers is a premium fireworks brand offering high-quality products for all your celebrations. We source our products directly from Sivakasi, ensuring the best quality and safety standards.',
   'home.featuredProducts': 'Featured Products',
   'home.quickLinks.categories': 'Categories',
   'home.quickLinks.newArrivals': 'New Arrivals',
@@ -128,7 +128,7 @@ const en = {
   'footer.contact': 'Contact Us',
   'footer.terms': 'Terms & Conditions',
   'footer.privacy': 'Privacy Policy',
-  'footer.copyright': '© {year} RK Crackers. All rights reserved.',
+  'footer.copyright': '© {year} RK Krackers. All rights reserved.',
   'footer.contactUs': 'Contact Us',
   'footer.address': '123 Fireworks Street, Sivakasi, Tamil Nadu, India',
   'footer.phone': '+91 98765 43210',
@@ -150,7 +150,6 @@ const en = {
   'footer.legal.terms': 'Terms of Service',
   'footer.legal.privacy': 'Privacy Policy',
   'footer.legal.safety': 'Safety Guidelines',
-  'footer.legal.SafetyGuidelines': 'Safety Guidelines',
 
   // Order Confirmation Page
   'order.success.title': 'Order Placed Successfully!',
@@ -169,7 +168,7 @@ const en = {
   'order.subtotal': 'Subtotal:',
   'order.tax': 'Tax (8%):',
   'order.grandTotal': 'Total:',
-  'order.thankyou': 'Thank you for shopping with RK Crackers!',
+  'order.thankyou': 'Thank you for shopping with RK Krackers!',
   'order.support': 'For any questions about your order, please contact us at support@rkcrackers.com',
 };
 

@@ -150,7 +150,6 @@ const ta = {
   'footer.legal.terms': 'சேவை விதிமுறைகள்',
   'footer.legal.privacy': 'தனியுரிமைக் கொள்கை',
   'footer.legal.safety': 'பாதுகாப்பு வழிகாட்டுதல்கள்',
-  'footer.legal.SafetyGuidelines': 'பாதுகாப்பு வழிகாட்டுதல்கள்',
 
   // Order Confirmation Page
   'order.success.title': 'ஆர்டர் வெற்றிகரமாக வைக்கப்பட்டது!',

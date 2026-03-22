@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useCart } from '../context/CartContext';
@@ -17,15 +17,37 @@ const CheckoutPage = () => {
     city: '',
     state: '',
     zipCode: '',
-    country: 'United States',
-    paymentMethod: 'credit',
-    cardNumber: '',
-    cardName: '',
-    expiryDate: '',
-    cvv: '',
+    country: 'India',
   });
   
   const [errors, setErrors] = useState({});
+  const [pincodeLookup, setPincodeLookup] = useState({ loading: false, error: '' });
+
+  // Auto-fill city & state from pincode
+  useEffect(() => {
+    const pin = formData.zipCode.trim();
+    if (!/^\d{6}$/.test(pin)) return;
+
+    setPincodeLookup({ loading: true, error: '' });
+    fetch(`https://api.postalpincode.in/pincode/${pin}`)
+      .then(res => res.json())
+      .then(data => {
+        const result = data[0];
+        if (result.Status === 'Success' && result.PostOffice?.length > 0) {
+          const po = result.PostOffice[0];
+          setFormData(prev => ({
+            ...prev,
+            city: po.District,
+            state: po.State,
+          }));
+          setErrors(prev => ({ ...prev, city: '', state: '', zipCode: '' }));
+          setPincodeLookup({ loading: false, error: '' });
+        } else {
+          setPincodeLookup({ loading: false, error: 'Invalid pincode' });
+        }
+      })
+      .catch(() => setPincodeLookup({ loading: false, error: 'Could not verify pincode' }));
+  }, [formData.zipCode]);
   
   // Handle form input changes
   const handleChange = (e) => {
@@ -62,31 +84,6 @@ const CheckoutPage = () => {
     // Email validation
     if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
-    }
-    
-    // Payment validation
-    if (formData.paymentMethod === 'credit') {
-      if (!formData.cardNumber) {
-        newErrors.cardNumber = 'Card number is required';
-      } else if (!/^\d{16}$/.test(formData.cardNumber.replace(/\s/g, ''))) {
-        newErrors.cardNumber = 'Please enter a valid 16-digit card number';
-      }
-      
-      if (!formData.cardName) {
-        newErrors.cardName = 'Name on card is required';
-      }
-      
-      if (!formData.expiryDate) {
-        newErrors.expiryDate = 'Expiry date is required';
-      } else if (!/^\d{2}\/\d{2}$/.test(formData.expiryDate)) {
-        newErrors.expiryDate = 'Please use MM/YY format';
-      }
-      
-      if (!formData.cvv) {
-        newErrors.cvv = 'CVV is required';
-      } else if (!/^\d{3,4}$/.test(formData.cvv)) {
-        newErrors.cvv = 'CVV must be 3 or 4 digits';
-      }
     }
     
     setErrors(newErrors);
@@ -202,7 +199,24 @@ const CheckoutPage = () => {
             
             <FormRow>
               <FormGroup>
-                <Label htmlFor="city">City</Label>
+                <Label htmlFor="zipCode">Pincode</Label>
+                <Input
+                  type="text"
+                  id="zipCode"
+                  name="zipCode"
+                  placeholder="6-digit PIN"
+                  maxLength={6}
+                  value={formData.zipCode}
+                  onChange={handleChange}
+                  error={errors.zipCode || pincodeLookup.error}
+                />
+                {pincodeLookup.loading && <HintMessage>Looking up pincode…</HintMessage>}
+                {pincodeLookup.error && <ErrorMessage>{pincodeLookup.error}</ErrorMessage>}
+                {errors.zipCode && !pincodeLookup.error && <ErrorMessage>{errors.zipCode}</ErrorMessage>}
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor="city">City / District</Label>
                 <Input
                   type="text"
                   id="city"
@@ -210,10 +224,11 @@ const CheckoutPage = () => {
                   value={formData.city}
                   onChange={handleChange}
                   error={errors.city}
+                  readOnly={!!formData.city && !errors.city}
                 />
                 {errors.city && <ErrorMessage>{errors.city}</ErrorMessage>}
               </FormGroup>
-              
+
               <FormGroup>
                 <Label htmlFor="state">State</Label>
                 <Input
@@ -223,21 +238,9 @@ const CheckoutPage = () => {
                   value={formData.state}
                   onChange={handleChange}
                   error={errors.state}
+                  readOnly={!!formData.state && !errors.state}
                 />
                 {errors.state && <ErrorMessage>{errors.state}</ErrorMessage>}
-              </FormGroup>
-              
-              <FormGroup>
-                <Label htmlFor="zipCode">ZIP Code</Label>
-                <Input
-                  type="text"
-                  id="zipCode"
-                  name="zipCode"
-                  value={formData.zipCode}
-                  onChange={handleChange}
-                  error={errors.zipCode}
-                />
-                {errors.zipCode && <ErrorMessage>{errors.zipCode}</ErrorMessage>}
               </FormGroup>
             </FormRow>
             
@@ -249,116 +252,21 @@ const CheckoutPage = () => {
                 value={formData.country}
                 onChange={handleChange}
                 error={errors.country}
+                disabled
               >
-                <option value="United States">United States</option>
-                <option value="Canada">Canada</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="Australia">Australia</option>
+                <option value="India">India</option>
               </Select>
               {errors.country && <ErrorMessage>{errors.country}</ErrorMessage>}
             </FormGroup>
           </FormSection>
           
-          <FormSection>
-            <SectionTitle>Payment Method</SectionTitle>
-            <PaymentNote>
-              <p>Your payment information is securely processed. We accept all major credit cards and PayPal.</p>
-              <p>Your card will only be charged when your order ships. All transactions are encrypted and secure.</p>
-            </PaymentNote>
-            
-            <PaymentOptions>
-              <PaymentOption>
-                <input
-                  type="radio"
-                  id="credit"
-                  name="paymentMethod"
-                  value="credit"
-                  checked={formData.paymentMethod === 'credit'}
-                  onChange={handleChange}
-                />
-                <label htmlFor="credit">Credit Card</label>
-              </PaymentOption>
-              
-              <PaymentOption>
-                <input
-                  type="radio"
-                  id="paypal"
-                  name="paymentMethod"
-                  value="paypal"
-                  checked={formData.paymentMethod === 'paypal'}
-                  onChange={handleChange}
-                />
-                <label htmlFor="paypal">PayPal</label>
-              </PaymentOption>
-            </PaymentOptions>
-            
-            {formData.paymentMethod === 'credit' && (
-              <>
-                <FormGroup>
-                  <Label htmlFor="cardNumber">Card Number</Label>
-                  <Input
-                    type="text"
-                    id="cardNumber"
-                    name="cardNumber"
-                    placeholder="1234 5678 9012 3456"
-                    value={formData.cardNumber}
-                    onChange={handleChange}
-                    error={errors.cardNumber}
-                  />
-                  {errors.cardNumber && <ErrorMessage>{errors.cardNumber}</ErrorMessage>}
-                </FormGroup>
-                
-                <FormGroup>
-                  <Label htmlFor="cardName">Name on Card</Label>
-                  <Input
-                    type="text"
-                    id="cardName"
-                    name="cardName"
-                    value={formData.cardName}
-                    onChange={handleChange}
-                    error={errors.cardName}
-                  />
-                  {errors.cardName && <ErrorMessage>{errors.cardName}</ErrorMessage>}
-                </FormGroup>
-                
-                <FormRow>
-                  <FormGroup>
-                    <Label htmlFor="expiryDate">Expiry Date</Label>
-                    <Input
-                      type="text"
-                      id="expiryDate"
-                      name="expiryDate"
-                      placeholder="MM/YY"
-                      value={formData.expiryDate}
-                      onChange={handleChange}
-                      error={errors.expiryDate}
-                    />
-                    {errors.expiryDate && <ErrorMessage>{errors.expiryDate}</ErrorMessage>}
-                  </FormGroup>
-                  
-                  <FormGroup>
-                    <Label htmlFor="cvv">CVV</Label>
-                    <Input
-                      type="text"
-                      id="cvv"
-                      name="cvv"
-                      placeholder="123"
-                      value={formData.cvv}
-                      onChange={handleChange}
-                      error={errors.cvv}
-                    />
-                    {errors.cvv && <ErrorMessage>{errors.cvv}</ErrorMessage>}
-                  </FormGroup>
-                </FormRow>
-              </>
-            )}
-            
-            {formData.paymentMethod === 'paypal' && (
-              <PaypalInfo>
-                <p>You will be redirected to PayPal to complete your payment.</p>
-              </PaypalInfo>
-            )}
-          </FormSection>
+          <PaymentMessage>
+            <PaymentIcon>💳</PaymentIcon>
+            <div>
+              <strong>Payment</strong>
+              <p>Our team will reach out to you regarding the payment after your order is placed.</p>
+            </div>
+          </PaymentMessage>
           
           <PlaceOrderButton type="submit">
             Place Order
@@ -508,6 +416,13 @@ const ErrorMessage = styled.div`
   margin-top: 0.5rem;
 `;
 
+const HintMessage = styled.div`
+  color: #888;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+`;
+
+
 const ShippingNote = styled.div`
   background-color: #f8f9fa;
   border-left: 3px solid #3498db;
@@ -525,21 +440,35 @@ const ShippingNote = styled.div`
   }
 `;
 
-const PaymentNote = styled.div`
-  background-color: #f8f9fa;
-  border-left: 3px solid #28a745;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  
-  p {
-    margin-bottom: 0.5rem;
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
+const PaymentMessage = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: #fff8e1;
+  border: 1px solid #ffe082;
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+
+  strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    color: #92400e;
   }
+
+  p {
+    margin: 0;
+    color: #78350f;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+`;
+
+const PaymentIcon = styled.span`
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  margin-top: 2px;
 `;
 
 const OrderPolicies = styled.div`
@@ -576,33 +505,6 @@ const OrderPolicies = styled.div`
       margin-bottom: 0;
     }
   }
-`;
-
-const PaymentOptions = styled.div`
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-`;
-
-const PaymentOption = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  
-  input {
-    margin: 0;
-  }
-  
-  label {
-    margin: 0;
-  }
-`;
-
-const PaypalInfo = styled.div`
-  background-color: #f9f9f9;
-  padding: 1rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
 `;
 
 const PlaceOrderButton = styled.button`

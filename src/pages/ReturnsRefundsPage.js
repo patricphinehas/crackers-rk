@@ -16,7 +16,7 @@ const ReturnsRefundsPage = () => {
       <PolicySection>
         <h2>Returns & Refunds</h2>
         <p>
-          At RK Crackers, we strive to ensure your complete satisfaction with every purchase. 
+          At RK Krackers, we strive to ensure your complete satisfaction with every purchase. 
           Please review our returns and refunds policy to understand our procedures.
         </p>
 

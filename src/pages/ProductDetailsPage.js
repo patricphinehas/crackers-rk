@@ -22,13 +22,17 @@ const getCategoryPathFromName = (categoryName) => {
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
-  const { addToCart } = useCart();
+  const { cart, addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
   const { t } = useTranslation();
 
   // Find the product by ID
   const product = products.find(p => p.id === parseInt(productId));
+
+  // How many of this product are already in the cart
+  const cartItem = product ? cart.items.find(i => i.id === product.id) : null;
+  const inCartCount = cartItem ? cartItem.quantity : 0;
 
   if (!product) {
     return (
@@ -86,7 +90,13 @@ const ProductDetailsPage = () => {
           <StockInfo inStock={product.stock > 0}>
             {product.stock > 0 ? t('product.inStock', { count: product.stock }) : t('product.outOfStock')}
           </StockInfo>
-          
+
+          {inCartCount > 0 && (
+            <InCartBadge>
+              🛒 {inCartCount} already in your cart
+            </InCartBadge>
+          )}
+
           <QuantityContainer>
             <label htmlFor="quantity">{t('product.quantity')}:</label>
             <QuantityControls>
@@ -293,25 +303,28 @@ const QuantityContainer = styled.div`
 const QuantityControls = styled.div`
   display: flex;
   align-items: center;
-  border: 1px solid #ddd;
+  border: 1px solid var(--primary-color);
   border-radius: 4px;
   overflow: hidden;
 `;
 
 const QuantityButton = styled.button`
-  background: #f5f5f5;
+  background: var(--primary-color);
+  color: white;
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
+  font-weight: 600;
   cursor: pointer;
-  
+  transition: background-color 0.2s;
+
   &:disabled {
-    opacity: 0.5;
+    background: #ccc;
     cursor: not-allowed;
   }
-  
+
   &:hover:not(:disabled) {
-    background: #e0e0e0;
+    background: var(--primary-color-dark, #c0392b);
   }
 `;
 
@@ -331,7 +344,7 @@ const QuantityInput = styled.input`
 `;
 
 const AddToCartButton = styled.button`
-  background-color: #3498db;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 4px;
@@ -341,11 +354,11 @@ const AddToCartButton = styled.button`
   cursor: pointer;
   transition: background-color 0.2s;
   margin-top: 1rem;
-  
+
   &:hover:not(:disabled) {
-    background-color: #2980b9;
+    background-color: var(--primary-color-dark, #c0392b);
   }
-  
+
   &:disabled {
     background-color: #bdc3c7;
     cursor: not-allowed;
@@ -360,6 +373,18 @@ const SuccessMessage = styled.div`
   margin-top: 1rem;
   text-align: center;
   font-weight: 500;
+`;
+
+const InCartBadge = styled.div`
+  display: inline-block;
+  background-color: #eaf6ff;
+  color: #2980b9;
+  border: 1px solid #aed6f1;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
 `;
 
 const ProductDetails = styled.div`

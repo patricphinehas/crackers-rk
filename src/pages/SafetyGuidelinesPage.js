@@ -98,9 +98,9 @@ const SafetyGuidelinesPage = () => {
   return (
     <PolicyContainer>
       <PolicyHeader>
-        <PolicyTitle>{t('footer.legal.safetyGuidelines')}</PolicyTitle>
+        <PolicyTitle>{t('footer.legal.safety')}</PolicyTitle>
         <PolicyDescription>
-          At RK Crackers, your safety is our top priority. Please read and follow these safety guidelines carefully when handling and using our fireworks products.
+          At RK Krackers, your safety is our top priority. Please read and follow these safety guidelines carefully when handling and using our fireworks products.
         </PolicyDescription>
       </PolicyHeader>
 
@@ -237,7 +237,7 @@ const SafetyGuidelinesPage = () => {
       <PolicySection>
         <SectionTitle>Legal Compliance</SectionTitle>
         <SectionContent>
-          <p>Users of RK Crackers products are responsible for complying with all local, state, and national laws regarding the purchase, possession, and use of fireworks. Regulations vary widely by location, and it is your responsibility to be aware of and follow the laws in your area.</p>
+          <p>Users of RK Krackers products are responsible for complying with all local, state, and national laws regarding the purchase, possession, and use of fireworks. Regulations vary widely by location, and it is your responsibility to be aware of and follow the laws in your area.</p>
           <p>Failure to comply with applicable laws may result in fines, confiscation of products, or criminal charges.</p>
         </SectionContent>
       </PolicySection>

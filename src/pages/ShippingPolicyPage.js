@@ -16,7 +16,7 @@ const ShippingPolicyPage = () => {
       <PolicySection>
         <h2>Shipping & Delivery</h2>
         <p>
-          At RK Crackers, we are committed to delivering your fireworks safely and efficiently. 
+          At RK Krackers, we are committed to delivering your fireworks safely and efficiently. 
           Please review our shipping policies below to understand our delivery process.
         </p>
 
