@@ -8,7 +8,7 @@ const ProductCard = ({ product }) => {
   
   const handleAddToCart = (e) => {
     e.preventDefault();
-    addToCart(product, 1);
+    addToCart(product);
   };
   
   return (
@@ -22,13 +22,13 @@ const ProductCard = ({ product }) => {
           <PriceContainer>
             {product.discount > 0 ? (
               <>
-                <OriginalPrice>${product.price.toFixed(2)}</OriginalPrice>
+                <OriginalPrice>₹{product.price.toLocaleString('en-IN')}</OriginalPrice>
                 <CurrentPrice>
-                  ${(product.price * (1 - product.discount / 100)).toFixed(2)}
+                  ₹{(product.price * (1 - product.discount / 100)).toLocaleString('en-IN')}
                 </CurrentPrice>
               </>
             ) : (
-              <CurrentPrice>${product.price.toFixed(2)}</CurrentPrice>
+              <CurrentPrice>₹{product.price.toLocaleString('en-IN')}</CurrentPrice>
             )}
           </PriceContainer>
         </ProductInfo>

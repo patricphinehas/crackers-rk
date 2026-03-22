@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { MapPin, Phone, Mail } from 'lucide-react';
 import { useTranslation } from '../utils/translate';
 
 const FooterContainer = styled.footer`
-  background-color: #263238;
+  background-color: var(--footer-bg);
   color: #fff;
   padding: 50px 0 20px;
 `;
@@ -20,7 +21,7 @@ const FooterContent = styled.div`
 
 const FooterColumn = styled.div`
   h3 {
-    color: var(--primary-color-2);
+    color: var(--footer-accent);
     margin-bottom: 20px;
     font-size: 18px;
   }
@@ -41,10 +42,7 @@ const ContactInfo = styled.div`
   margin-bottom: 10px;
   display: flex;
   align-items: flex-start;
-  
-  span {
-    margin-left: 10px;
-  }
+  gap: 10px;
 `;
 
 const SocialIcons = styled.div`
@@ -86,15 +84,15 @@ const Footer = () => {
         <FooterColumn>
           <h3>{t('footer.contactUs')}</h3>
           <ContactInfo>
-            <span>📍</span>
+            <MapPin size={18} style={{ flexShrink: 0 }} />
             <span>{t('footer.address')}</span>
           </ContactInfo>
           <ContactInfo>
-            <span>📞</span>
+            <Phone size={18} style={{ flexShrink: 0 }} />
             <span>{t('footer.phone')}</span>
           </ContactInfo>
           <ContactInfo>
-            <span>✉️</span>
+            <Mail size={18} style={{ flexShrink: 0 }} />
             <span>{t('footer.email')}</span>
           </ContactInfo>
           <SocialIcons>
@@ -128,7 +126,7 @@ const Footer = () => {
           <FooterLink to="/disclaimers">{t('footer.legal.disclaimers')}</FooterLink>
           <FooterLink to="/terms">{t('footer.legal.terms')}</FooterLink>
           <FooterLink to="/privacy">{t('footer.legal.privacy')}</FooterLink>
-          <FooterLink to="/safety">{t('footer.legal.safetyGuidelines')}</FooterLink>
+          <FooterLink to="/safety">{t('footer.legal.safety')}</FooterLink>
         </FooterColumn>
       </FooterContent>
       

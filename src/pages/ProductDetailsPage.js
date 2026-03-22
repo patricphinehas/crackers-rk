@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { Star, AlertTriangle } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import products from '../data/products';
 import { getCategoryPathMapping } from '../data/dataService';
@@ -21,7 +22,7 @@ const getCategoryPathFromName = (categoryName) => {
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
-  const { addToCart } = useCart();
+  const { cart, addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
   const { t } = useTranslation();
@@ -29,12 +30,16 @@ const ProductDetailsPage = () => {
   // Find the product by ID
   const product = products.find(p => p.id === parseInt(productId));
 
+  // How many of this product are already in the cart
+  const cartItem = product ? cart.items.find(i => i.id === product.id) : null;
+  const inCartCount = cartItem ? cartItem.quantity : 0;
+
   if (!product) {
     return (
       <ErrorContainer>
-        <h2>{t('product.notFound')}</h2>
-        <p>{t('product.notFoundDesc')}</p>
-        <Link to="/">{t('common.returnHome')}</Link>
+        <h2>{t('product.notFound.title')}</h2>
+        <p>{t('product.notFound.message')}</p>
+        <Link to="/">{t('product.notFound.home')}</Link>
       </ErrorContainer>
     );
   }
@@ -71,21 +76,27 @@ const ProductDetailsPage = () => {
           
           <Rating>
             {Array(5).fill().map((_, i) => (
-              <Star key={i} filled={i < Math.floor(product.rating)}>
-                ★
-              </Star>
+              <StarWrapper key={i} filled={i < Math.floor(product.rating)}>
+                <Star size={18} fill={i < Math.floor(product.rating) ? 'currentColor' : 'none'} />
+              </StarWrapper>
             ))}
             <span>({product.rating}) - {product.reviews} reviews</span>
           </Rating>
           
-          <Price>${product.price.toFixed(2)}</Price>
+          <Price>₹{product.price.toLocaleString('en-IN')}</Price>
           
           <Description>{product.description}</Description>
           
           <StockInfo inStock={product.stock > 0}>
             {product.stock > 0 ? t('product.inStock', { count: product.stock }) : t('product.outOfStock')}
           </StockInfo>
-          
+
+          {inCartCount > 0 && (
+            <InCartBadge>
+              🛒 {inCartCount} already in your cart
+            </InCartBadge>
+          )}
+
           <QuantityContainer>
             <label htmlFor="quantity">{t('product.quantity')}:</label>
             <QuantityControls>
@@ -121,7 +132,7 @@ const ProductDetailsPage = () => {
           
           {addedToCart && (
             <SuccessMessage>
-              {t('product.addedToCartSuccess')}
+              {t('product.added')}
             </SuccessMessage>
           )}
         </ProductInfo>
@@ -141,14 +152,14 @@ const ProductDetailsPage = () => {
         </FeaturesContainer>
         
         <SafetyInstructions>
-          <h3>{t('product.safetyInstructions')}</h3>
+          <h3>{t('product.safety')}</h3>
           <SafetyList>
-            <SafetyItem>{t('product.safety.adultSupervision')}</SafetyItem>
-            <SafetyItem>{t('product.safety.keepAway')}</SafetyItem>
-            <SafetyItem>{t('product.safety.openAreas')}</SafetyItem>
-            <SafetyItem>{t('product.safety.waterNearby')}</SafetyItem>
-            <SafetyItem>{t('product.safety.readInstructions')}</SafetyItem>
-            <SafetyItem>{t('product.safety.storeCool')}</SafetyItem>
+            <SafetyItem><AlertTriangle size={16} /><span>{t('product.safety.adultSupervision')}</span></SafetyItem>
+            <SafetyItem><AlertTriangle size={16} /><span>{t('product.safety.keepAway')}</span></SafetyItem>
+            <SafetyItem><AlertTriangle size={16} /><span>{t('product.safety.openAreas')}</span></SafetyItem>
+            <SafetyItem><AlertTriangle size={16} /><span>{t('product.safety.waterNearby')}</span></SafetyItem>
+            <SafetyItem><AlertTriangle size={16} /><span>{t('product.safety.readInstructions')}</span></SafetyItem>
+            <SafetyItem><AlertTriangle size={16} /><span>{t('product.safety.storeCool')}</span></SafetyItem>
           </SafetyList>
         </SafetyInstructions>
         
@@ -176,7 +187,7 @@ const ProductDetailsPage = () => {
                 <Link to={`/product/${relatedProduct.id}`}>
                   <RelatedProductImage src={relatedProduct.image} alt={relatedProduct.name} />
                   <RelatedProductName>{relatedProduct.name}</RelatedProductName>
-                  <RelatedProductPrice>${relatedProduct.price.toFixed(2)}</RelatedProductPrice>
+                  <RelatedProductPrice>₹{relatedProduct.price.toLocaleString('en-IN')}</RelatedProductPrice>
                 </Link>
                 <CategoryLink to={`/categories/${getCategoryPathFromName(relatedProduct.category)}`}>
                   {relatedProduct.category}
@@ -256,9 +267,9 @@ const Rating = styled.div`
   }
 `;
 
-const Star = styled.span`
+const StarWrapper = styled.span`
+  display: inline-flex;
   color: ${props => props.filled ? '#FFD700' : '#e0e0e0'};
-  font-size: 1.2rem;
 `;
 
 const Price = styled.div`
@@ -292,25 +303,28 @@ const QuantityContainer = styled.div`
 const QuantityControls = styled.div`
   display: flex;
   align-items: center;
-  border: 1px solid #ddd;
+  border: 1px solid var(--primary-color);
   border-radius: 4px;
   overflow: hidden;
 `;
 
 const QuantityButton = styled.button`
-  background: #f5f5f5;
+  background: var(--primary-color);
+  color: white;
   border: none;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
+  font-weight: 600;
   cursor: pointer;
-  
+  transition: background-color 0.2s;
+
   &:disabled {
-    opacity: 0.5;
+    background: #ccc;
     cursor: not-allowed;
   }
-  
+
   &:hover:not(:disabled) {
-    background: #e0e0e0;
+    background: var(--primary-color-dark, #c0392b);
   }
 `;
 
@@ -330,7 +344,7 @@ const QuantityInput = styled.input`
 `;
 
 const AddToCartButton = styled.button`
-  background-color: #3498db;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 4px;
@@ -340,11 +354,11 @@ const AddToCartButton = styled.button`
   cursor: pointer;
   transition: background-color 0.2s;
   margin-top: 1rem;
-  
+
   &:hover:not(:disabled) {
-    background-color: #2980b9;
+    background-color: var(--primary-color-dark, #c0392b);
   }
-  
+
   &:disabled {
     background-color: #bdc3c7;
     cursor: not-allowed;
@@ -359,6 +373,18 @@ const SuccessMessage = styled.div`
   margin-top: 1rem;
   text-align: center;
   font-weight: 500;
+`;
+
+const InCartBadge = styled.div`
+  display: inline-block;
+  background-color: #eaf6ff;
+  color: #2980b9;
+  border: 1px solid #aed6f1;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
 `;
 
 const ProductDetails = styled.div`
@@ -410,14 +436,13 @@ const SafetyList = styled.ul`
 `;
 
 const SafetyItem = styled.li`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-bottom: 0.5rem;
-  padding-left: 1.5rem;
-  position: relative;
-  
-  &:before {
-    content: '⚠️';
-    position: absolute;
-    left: 0;
+
+  svg {
+    flex-shrink: 0;
     color: #ffc107;
   }
 `;

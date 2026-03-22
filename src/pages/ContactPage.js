@@ -2,107 +2,104 @@ import React from 'react';
 import { getCategories, getCrackerTypesByCategory } from '../data/dataService';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { MapPin, Phone, Mail, Clock, Flame, Eye, Droplets, Ruler } from 'lucide-react';
+import { getCategoryIconComponent } from '../utils/categoryIcons';
+import { useTranslation } from '../utils/translate';
 
 const ContactPage = () => {
+  const { t } = useTranslation();
+
   return (
     <PageContainer>
       <PageHeader>
-        <h1>Contact Us</h1>
+        <h1>{t('contact.title')}</h1>
         <Breadcrumb>
-          <Link to="/">Home</Link> / Contact Us
+          <Link to="/">{t('nav.home')}</Link> / {t('contact.title')}
         </Breadcrumb>
       </PageHeader>
 
       <ContactSection>
         <ContactInfo>
-          <h2>Get in Touch</h2>
-          <p>
-            Have questions about our products or need assistance with your order? 
-            Our customer service team is here to help you with any inquiries.
-          </p>
-          
+          <h2>{t('contact.getInTouch')}</h2>
+          <p>{t('contact.getInTouchDesc')}</p>
+
           <ContactDetail>
-            <ContactIcon>📍</ContactIcon>
+            <ContactIcon><MapPin size={24} /></ContactIcon>
             <div>
-              <h3>Address</h3>
-              <p>Peacock Crackers, Standard Firework Factory Area, Sivakasi, Tamil Nadu 626189, India</p>
+              <h3>{t('contact.address.title')}</h3>
+              <p>3/1991 Sivakasi road, Kumaralinga puram, Virudhunagar, Tamil Nadu 626103, India</p>
             </div>
           </ContactDetail>
-          
+
           <ContactDetail>
-            <ContactIcon>📞</ContactIcon>
+            <ContactIcon><Phone size={24} /></ContactIcon>
             <div>
-              <h3>Phone</h3>
-              <p>+91 8144 182 182</p>
+              <h3>{t('contact.phone.title')}</h3>
+              <p>+91 9842372122, 8940888500</p>
             </div>
           </ContactDetail>
-          
+
           <ContactDetail>
-            <ContactIcon>✉️</ContactIcon>
+            <ContactIcon><Mail size={24} /></ContactIcon>
             <div>
-              <h3>Email</h3>
+              <h3>{t('contact.email.title')}</h3>
               <p>info@crackersrk.com</p>
             </div>
           </ContactDetail>
-          
+
           <ContactDetail>
-            <ContactIcon>🕒</ContactIcon>
+            <ContactIcon><Clock size={24} /></ContactIcon>
             <div>
-              <h3>Business Hours</h3>
-              <p>Monday - Saturday: 9:00 AM - 6:00 PM</p>
-              <p>Sunday: Closed</p>
+              <h3>{t('contact.hours.title')}</h3>
+              <p>{t('contact.hours.weekdays')}</p>
+              <p>{t('contact.hours.sunday')}</p>
             </div>
           </ContactDetail>
-          
-          <SocialIcons>
-            <SocialIcon href="#" aria-label="Facebook">f</SocialIcon>
-            <SocialIcon href="#" aria-label="Twitter">t</SocialIcon>
-            <SocialIcon href="#" aria-label="Instagram">i</SocialIcon>
-            <SocialIcon href="#" aria-label="YouTube">y</SocialIcon>
-          </SocialIcons>
         </ContactInfo>
-        
+
         <ContactForm>
-          <h2>Send Us a Message</h2>
+          <h2>{t('contact.sendMessage')}</h2>
           <FormGroup>
-            <Label htmlFor="name">Your Name</Label>
+            <Label htmlFor="name">{t('contact.form.name')}</Label>
             <Input type="text" id="name" name="name" />
           </FormGroup>
-          
+
           <FormGroup>
-            <Label htmlFor="email">Email Address</Label>
+            <Label htmlFor="email">{t('contact.form.email')}</Label>
             <Input type="email" id="email" name="email" />
           </FormGroup>
-          
+
           <FormGroup>
-            <Label htmlFor="phone">Phone Number</Label>
+            <Label htmlFor="phone">{t('contact.form.phone')}</Label>
             <Input type="tel" id="phone" name="phone" />
           </FormGroup>
-          
+
           <FormGroup>
-            <Label htmlFor="subject">Subject</Label>
+            <Label htmlFor="subject">{t('contact.form.subject')}</Label>
             <Input type="text" id="subject" name="subject" />
           </FormGroup>
-          
+
           <FormGroup>
-            <Label htmlFor="message">Your Message</Label>
+            <Label htmlFor="message">{t('contact.form.message')}</Label>
             <TextArea id="message" name="message" rows="5"></TextArea>
           </FormGroup>
-          
-          <SubmitButton type="submit">Send Message</SubmitButton>
+
+          <SubmitButton type="submit">{t('contact.form.submit')}</SubmitButton>
         </ContactForm>
       </ContactSection>
-      
+
       <ProductCategoriesSection>
-        <h2>Our Cracker Types</h2>
-        <p>Explore our wide range of high-quality fireworks and crackers for all your celebrations.</p>
-        
+        <h2>{t('contact.products.title')}</h2>
+        <p>{t('contact.products.desc')}</p>
+
         <CategoriesGrid>
           {getCategories().map(category => {
             const types = getCrackerTypesByCategory(category.name);
             return (
               <CategoryCard key={category.id}>
-                <CategoryIcon>{category.icon}</CategoryIcon>
+                <CategoryIcon>
+                  {React.createElement(getCategoryIconComponent(category.icon), { size: 32 })}
+                </CategoryIcon>
                 <h3>{category.name}</h3>
                 <p>{category.description}</p>
                 <CategoryTypes>
@@ -115,34 +112,34 @@ const ContactPage = () => {
           })}
         </CategoriesGrid>
       </ProductCategoriesSection>
-      
+
       <SafetySection>
-        <h2>Safety Guidelines</h2>
-        <p>At Crackers RK, we prioritize your safety. Please follow these guidelines when using our products:</p>
-        
+        <h2>{t('contact.safety.title')}</h2>
+        <p>{t('contact.safety.desc')}</p>
+
         <SafetyGrid>
           <SafetyItem>
-            <SafetyIcon>🔥</SafetyIcon>
-            <h3>Keep Away from Flammables</h3>
-            <p>Use fireworks in open areas away from buildings, vehicles, and flammable materials.</p>
+            <SafetyIcon><Flame size={24} /></SafetyIcon>
+            <h3>{t('contact.safety.flammables.title')}</h3>
+            <p>{t('contact.safety.flammables.desc')}</p>
           </SafetyItem>
-          
+
           <SafetyItem>
-            <SafetyIcon>👁️</SafetyIcon>
-            <h3>Adult Supervision</h3>
-            <p>Children should always be supervised by adults when handling fireworks.</p>
+            <SafetyIcon><Eye size={24} /></SafetyIcon>
+            <h3>{t('contact.safety.supervision.title')}</h3>
+            <p>{t('contact.safety.supervision.desc')}</p>
           </SafetyItem>
-          
+
           <SafetyItem>
-            <SafetyIcon>💧</SafetyIcon>
-            <h3>Keep Water Nearby</h3>
-            <p>Always have a bucket of water or fire extinguisher ready for emergencies.</p>
+            <SafetyIcon><Droplets size={24} /></SafetyIcon>
+            <h3>{t('contact.safety.water.title')}</h3>
+            <p>{t('contact.safety.water.desc')}</p>
           </SafetyItem>
-          
+
           <SafetyItem>
-            <SafetyIcon>📏</SafetyIcon>
-            <h3>Safe Distance</h3>
-            <p>Maintain a safe distance after lighting fireworks.</p>
+            <SafetyIcon><Ruler size={24} /></SafetyIcon>
+            <h3>{t('contact.safety.distance.title')}</h3>
+            <p>{t('contact.safety.distance.desc')}</p>
           </SafetyItem>
         </SafetyGrid>
       </SafetySection>

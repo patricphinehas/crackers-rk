@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { getCategories } from '../data/dataService';
 import { useTranslation } from '../utils/translate';
+import { getCategoryIconComponent } from '../utils/categoryIcons';
 
 const PageContainer = styled.div`
   padding: 50px 0;
@@ -51,13 +52,16 @@ const CategoryCard = styled(Link)`
 
 const CategoryImage = styled.div`
   height: 200px;
-  background-color: #f5f5f5;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), #f5f5f5;
-  
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url(${props => props.image});
+  background-size: cover;
+  background-position: center;
+  background-color: #1a1a2e;
+
   .icon {
     font-size: 3rem;
     color: white;
@@ -101,8 +105,10 @@ const CategoriesPage = () => {
       <CategoriesGrid>
         {categories.map(category => (
           <CategoryCard key={category.id} to={category.path}>
-            <CategoryImage>
-              <div className="icon">{category.icon}</div>
+            <CategoryImage image={category.image}>
+              <div className="icon">
+                {React.createElement(getCategoryIconComponent(category.icon), { size: 48 })}
+              </div>
             </CategoryImage>
             <CategoryInfo>
               <h3>{category.name}</h3>

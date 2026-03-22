@@ -1,12 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { Check } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useTranslation } from '../utils/translate';
 
 const OrderConfirmationPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { clearCart } = useCart();
+  const { t } = useTranslation();
   const printRef = useRef();
   
   // Get order details from location state
@@ -46,35 +49,35 @@ const OrderConfirmationPage = () => {
   return (
     <PageContainer>
       <OrderConfirmation>
-        <SuccessIcon>✓</SuccessIcon>
-        <h1>Order Placed Successfully!</h1>
-        <p>Thank you for your purchase. Your order has been received.</p>
-        <p>A confirmation email will be sent to {shippingInfo.email} shortly.</p>
-        
+        <SuccessIcon><Check size={48} strokeWidth={2} /></SuccessIcon>
+        <h1>{t('order.success.title')}</h1>
+        <p>{t('order.success.message')}</p>
+        <p>{t('order.success.emailNote', { email: shippingInfo.email })}</p>
+
         <ButtonsContainer>
-          <PrintButton onClick={handlePrint}>Print Receipt</PrintButton>
-          <ReturnButton onClick={handleReturnHome}>Return to Home</ReturnButton>
+          <PrintButton onClick={handlePrint}>{t('order.print')}</PrintButton>
+          <ReturnButton onClick={handleReturnHome}>{t('order.returnHome')}</ReturnButton>
         </ButtonsContainer>
-        
+
         <PrintableReceipt ref={printRef}>
           <ReceiptHeader>
-            <h2>Order Receipt</h2>
-            <p>RK Crackers</p>
+            <h2>{t('order.receipt.title')}</h2>
+            <p>{t('app.name')}</p>
           </ReceiptHeader>
-          
+
           <OrderDetails>
             <OrderDetail>
-              <span>Order Number:</span>
+              <span>{t('order.number')}</span>
               <strong>{orderNumber}</strong>
             </OrderDetail>
             <OrderDetail>
-              <span>Order Date:</span>
+              <span>{t('order.date')}</span>
               <strong>{orderDate}</strong>
             </OrderDetail>
           </OrderDetails>
-          
+
           <CustomerInfo>
-            <h3>Customer Information</h3>
+            <h3>{t('order.customer.title')}</h3>
             <p>{shippingInfo.firstName} {shippingInfo.lastName}</p>
             <p>{shippingInfo.email}</p>
             <p>{shippingInfo.address}</p>
@@ -85,10 +88,10 @@ const OrderConfirmationPage = () => {
           <ItemsTable>
             <thead>
               <tr>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Total</th>
+                <th>{t('order.table.item')}</th>
+                <th>{t('order.table.quantity')}</th>
+                <th>{t('order.table.price')}</th>
+                <th>{t('order.table.total')}</th>
               </tr>
             </thead>
             <tbody>
@@ -96,8 +99,8 @@ const OrderConfirmationPage = () => {
                 <tr key={index}>
                   <td>{item.name}</td>
                   <td>{item.quantity}</td>
-                  <td>${item.price.toFixed(2)}</td>
-                  <td>${(item.price * item.quantity).toFixed(2)}</td>
+                  <td>₹{item.price.toLocaleString('en-IN')}</td>
+                  <td>₹{(item.price * item.quantity).toLocaleString('en-IN')}</td>
                 </tr>
               ))}
             </tbody>
@@ -105,22 +108,22 @@ const OrderConfirmationPage = () => {
           
           <OrderSummary>
             <SummaryRow>
-              <span>Subtotal:</span>
-              <span>${(totalAmount * 0.92).toFixed(2)}</span>
+              <span>{t('order.subtotal')}</span>
+              <span>₹{Math.round(totalAmount / 1.28).toLocaleString('en-IN')}</span>
             </SummaryRow>
             <SummaryRow>
-              <span>Tax (8%):</span>
-              <span>${(totalAmount * 0.08).toFixed(2)}</span>
+              <span>{t('order.tax')} (GST 28%)</span>
+              <span>₹{Math.round(totalAmount - totalAmount / 1.28).toLocaleString('en-IN')}</span>
             </SummaryRow>
             <SummaryRow total>
-              <span>Total:</span>
-              <span>${totalAmount.toFixed(2)}</span>
+              <span>{t('order.grandTotal')}</span>
+              <span>₹{totalAmount.toLocaleString('en-IN')}</span>
             </SummaryRow>
           </OrderSummary>
-          
+
           <ThankYouMessage>
-            <p>Thank you for shopping with RK Crackers!</p>
-            <p>For any questions about your order, please contact us at support@rkcrackers.com</p>
+            <p>{t('order.thankyou')}</p>
+            <p>{t('order.support')}</p>
           </ThankYouMessage>
         </PrintableReceipt>
       </OrderConfirmation>

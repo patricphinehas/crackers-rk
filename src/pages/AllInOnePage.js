@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import products from '../data/products';
 import { useTranslation } from '../utils/translate';
@@ -8,9 +8,17 @@ import { useTranslation } from '../utils/translate';
 const AllInOnePage = () => {
   const { t } = useTranslation();
   const { cart, addToCart, removeFromCart } = useCart();
+  const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [productQuantities, setProductQuantities] = useState({});
+
+  // Pre-populate search from URL query param (e.g. ?q=sparklers)
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const q = params.get('q');
+    if (q) setSearchTerm(q);
+  }, [location.search]);
   
   // Get unique categories
   const categories = ['all', ...new Set(products.map(product => product.category))];
@@ -86,15 +94,19 @@ const AllInOnePage = () => {
               <ProductDescription>{product.description.substring(0, 100)}...</ProductDescription>
               
               <PriceContainer>
-                {product.discount > 0 ? (
-                  <>
-                    <OriginalPrice>${product.price.toFixed(2)}</OriginalPrice>
-                    <CurrentPrice>
-                      ${(product.price * (1 - product.discount / 100)).toFixed(2)}
-                    </CurrentPrice>
-                  </>
+                {product.price != null ? (
+                  product.discount > 0 ? (
+                    <>
+                      <OriginalPrice>₹{product.price.toLocaleString('en-IN')}</OriginalPrice>
+                      <CurrentPrice>
+                        ₹{(product.price * (1 - product.discount / 100)).toLocaleString('en-IN')}
+                      </CurrentPrice>
+                    </>
+                  ) : (
+                    <CurrentPrice>₹{product.price.toLocaleString('en-IN')}</CurrentPrice>
+                  )
                 ) : (
-                  <CurrentPrice>${product.price.toFixed(2)}</CurrentPrice>
+                  <CurrentPrice>{t('product.priceOnRequest') || 'Price on request'}</CurrentPrice>
                 )}
               </PriceContainer>
               

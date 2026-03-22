@@ -84,7 +84,7 @@ const PrivacyPolicyPage = () => {
       <PolicyHeader>
         <PolicyTitle>{t('footer.legal.privacyPolicy')}</PolicyTitle>
         <PolicyDescription>
-          This Privacy Policy describes how RK Crackers collects, uses, and shares your personal information when you visit our website, make purchases, or interact with us.
+          This Privacy Policy describes how RK Krackers collects, uses, and shares your personal information when you visit our website, make purchases, or interact with us.
         </PolicyDescription>
       </PolicyHeader>
 
