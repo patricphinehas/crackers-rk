@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Star, AlertTriangle } from 'lucide-react';
@@ -28,7 +28,17 @@ const ProductDetailsPage = () => {
   const { t } = useTranslation();
 
   // Find the product by ID
-  const product = products.find(p => p.id === parseInt(productId));
+  const product = useMemo(() =>
+    products.find(p => p.id === parseInt(productId)),
+    [productId, products]
+  );
+
+  const relatedProducts = useMemo(() => {
+    if (!product) return [];
+    return products
+      .filter(p => p.id !== product.id)
+      .slice(0, 3);
+  }, [product?.id, products]);
 
   // How many of this product are already in the cart
   const cartItem = product ? cart.items.find(i => i.id === product.id) : null;
@@ -179,10 +189,7 @@ const ProductDetailsPage = () => {
       <RelatedProducts>
         <h2>You May Also Like</h2>
         <RelatedProductsGrid>
-          {products
-            .filter(p => p.id !== product.id)
-            .slice(0, 3)
-            .map(relatedProduct => (
+          {relatedProducts.map(relatedProduct => (
               <RelatedProductCard key={relatedProduct.id}>
                 <Link to={`/product/${relatedProduct.id}`}>
                   <RelatedProductImage src={relatedProduct.image} alt={relatedProduct.name} />
