@@ -32,18 +32,11 @@ const cartReducer = (state, action) => {
         updatedItems = [...state.items, { ...action.payload, quantity: 1 }];
       }
 
-      // Calculate new totals
-      const totalItems = updatedItems.reduce((sum, item) => sum + item.quantity, 0);
-      const totalPrice = updatedItems.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
-      );
-
       return {
         ...state,
         items: updatedItems,
-        totalItems,
-        totalPrice,
+        totalItems: state.totalItems + 1,
+        totalPrice: state.totalPrice + action.payload.price,
       };
     }
 
@@ -67,40 +60,32 @@ const cartReducer = (state, action) => {
           updatedItems = state.items.filter((item) => item.id !== action.payload.id);
         }
 
-        // Calculate new totals
-        const totalItems = updatedItems.reduce((sum, item) => sum + item.quantity, 0);
-        const totalPrice = updatedItems.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0
-        );
-
         return {
           ...state,
           items: updatedItems,
-          totalItems,
-          totalPrice,
+          totalItems: state.totalItems - 1,
+          totalPrice: state.totalPrice - state.items[existingItemIndex].price,
         };
       }
       return state;
     }
 
     case 'DELETE_ITEM': {
-      const updatedItems = state.items.filter(
-        (item) => item.id !== action.payload.id
+      const itemToDelete = state.items.find(
+        (item) => item.id === action.payload.id
       );
 
-      // Calculate new totals
-      const totalItems = updatedItems.reduce((sum, item) => sum + item.quantity, 0);
-      const totalPrice = updatedItems.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
+      if (!itemToDelete) return state;
+
+      const updatedItems = state.items.filter(
+        (item) => item.id !== action.payload.id
       );
 
       return {
         ...state,
         items: updatedItems,
-        totalItems,
-        totalPrice,
+        totalItems: state.totalItems - itemToDelete.quantity,
+        totalPrice: state.totalPrice - (itemToDelete.price * itemToDelete.quantity),
       };
     }
 
