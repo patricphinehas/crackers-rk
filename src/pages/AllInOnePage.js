@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -21,15 +21,22 @@ const AllInOnePage = () => {
   }, [location.search]);
   
   // Get unique categories
-  const categories = ['all', ...new Set(products.map(product => product.category))];
+  const categories = useMemo(() => {
+    return ['all', ...new Set(products.map(product => product.category))];
+  }, []);
   
   // Filter products based on search term and selected category
-  const filteredProducts = products.filter(product => {
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         product.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+  const filteredProducts = useMemo(() => {
+    const searchLower = searchTerm.toLowerCase();
+    return products.filter(product => {
+      const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
+      if (!matchesCategory) return false;
+
+      if (!searchLower) return true;
+      return product.name.toLowerCase().includes(searchLower) ||
+             product.description.toLowerCase().includes(searchLower);
+    });
+  }, [searchTerm, selectedCategory]);
   
   // Initialize product quantities based on cart items
   useEffect(() => {
