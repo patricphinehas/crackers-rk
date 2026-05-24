@@ -45,10 +45,8 @@ const ProductDetailsPage = () => {
   }
 
   const handleAddToCart = () => {
-    // Add the product to cart multiple times based on quantity
-    for (let i = 0; i < quantity; i++) {
-      addToCart(product);
-    }
+    // Add the product to cart with the selected quantity
+    addToCart(product, quantity);
     
     // Show success message
     setAddedToCart(true);

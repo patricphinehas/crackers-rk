@@ -14,6 +14,7 @@ const CartContext = createContext();
 const cartReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_ITEM': {
+      const quantityToAdd = action.quantity || 1;
       const existingItemIndex = state.items.findIndex(
         (item) => item.id === action.payload.id
       );
@@ -25,11 +26,11 @@ const cartReducer = (state, action) => {
         updatedItems = [...state.items];
         updatedItems[existingItemIndex] = {
           ...updatedItems[existingItemIndex],
-          quantity: updatedItems[existingItemIndex].quantity + 1,
+          quantity: updatedItems[existingItemIndex].quantity + quantityToAdd,
         };
       } else {
-        // Add new item with quantity 1
-        updatedItems = [...state.items, { ...action.payload, quantity: 1 }];
+        // Add new item with quantity
+        updatedItems = [...state.items, { ...action.payload, quantity: quantityToAdd }];
       }
 
       // Calculate new totals
@@ -127,10 +128,11 @@ export const CartProvider = ({ children }) => {
   }, [state]);
 
   // Add item to cart
-  const addToCart = (product) => {
+  const addToCart = (product, quantity = 1) => {
     dispatch({
       type: 'ADD_ITEM',
       payload: product,
+      quantity,
     });
   };
 
