@@ -30,7 +30,7 @@ const ProductDetailsPage = () => {
   // Find the product by ID
   const product = useMemo(() =>
     products.find(p => p.id === parseInt(productId)),
-    [productId, products]
+    [productId]
   );
 
   const relatedProducts = useMemo(() => {
@@ -38,7 +38,7 @@ const ProductDetailsPage = () => {
     return products
       .filter(p => p.id !== product.id)
       .slice(0, 3);
-  }, [product?.id, products]);
+  }, [product]);
 
   // How many of this product are already in the cart
   const cartItem = product ? cart.items.find(i => i.id === product.id) : null;
