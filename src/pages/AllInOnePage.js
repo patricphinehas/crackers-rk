@@ -23,7 +23,7 @@ const AllInOnePage = () => {
   // Get unique categories
   const categories = useMemo(() => {
     return ['all', ...new Set(products.map(product => product.category))];
-  }, [products]);
+  }, []);
   
   // Filter products based on search term and selected category
   const filteredProducts = useMemo(() => {
@@ -36,7 +36,7 @@ const AllInOnePage = () => {
       return product.name.toLowerCase().includes(searchLower) ||
              product.description.toLowerCase().includes(searchLower);
     });
-  }, [products, searchTerm, selectedCategory]);
+  }, [searchTerm, selectedCategory]);
   
   // Initialize product quantities based on cart items
   useEffect(() => {
