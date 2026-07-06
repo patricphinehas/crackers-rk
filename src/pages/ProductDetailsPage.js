@@ -10,13 +10,14 @@ import { useTranslation } from '../utils/translate';
 // Using products data imported from data file
 
 // Function to get category path from category name
+const pathMapping = getCategoryPathMapping();
+// Invert the mapping to get name-to-path
+const nameToPathMapping = {};
+for (const [path, name] of Object.entries(pathMapping)) {
+  nameToPathMapping[name] = path;
+}
+
 const getCategoryPathFromName = (categoryName) => {
-  const pathMapping = getCategoryPathMapping();
-  // Invert the mapping to get name-to-path
-  const nameToPathMapping = {};
-  for (const [path, name] of Object.entries(pathMapping)) {
-    nameToPathMapping[name] = path;
-  }
   return nameToPathMapping[categoryName] || '';
 };
 
