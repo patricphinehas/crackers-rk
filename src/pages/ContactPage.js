@@ -226,28 +226,7 @@ const ContactIcon = styled.span`
   color: var(--primary-color);
 `;
 
-const SocialIcons = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-`;
 
-const SocialIcon = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 50%;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  
-  &:hover {
-    background-color: var(--primary-color-3);
-  }
-`;
 
 const ContactForm = styled.form`
   background-color: white;

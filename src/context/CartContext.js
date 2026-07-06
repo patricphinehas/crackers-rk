@@ -33,10 +33,13 @@ const cartReducer = (state, action) => {
       }
 
       // Calculate new totals
-      const totalItems = updatedItems.reduce((sum, item) => sum + item.quantity, 0);
-      const totalPrice = updatedItems.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
+      const { totalItems, totalPrice } = updatedItems.reduce(
+        (acc, item) => {
+          acc.totalItems += item.quantity;
+          acc.totalPrice += item.price * item.quantity;
+          return acc;
+        },
+        { totalItems: 0, totalPrice: 0 }
       );
 
       return {
@@ -68,10 +71,13 @@ const cartReducer = (state, action) => {
         }
 
         // Calculate new totals
-        const totalItems = updatedItems.reduce((sum, item) => sum + item.quantity, 0);
-        const totalPrice = updatedItems.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0
+        const { totalItems, totalPrice } = updatedItems.reduce(
+          (acc, item) => {
+            acc.totalItems += item.quantity;
+            acc.totalPrice += item.price * item.quantity;
+            return acc;
+          },
+          { totalItems: 0, totalPrice: 0 }
         );
 
         return {
@@ -90,10 +96,13 @@ const cartReducer = (state, action) => {
       );
 
       // Calculate new totals
-      const totalItems = updatedItems.reduce((sum, item) => sum + item.quantity, 0);
-      const totalPrice = updatedItems.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
+      const { totalItems, totalPrice } = updatedItems.reduce(
+        (acc, item) => {
+          acc.totalItems += item.quantity;
+          acc.totalPrice += item.price * item.quantity;
+          return acc;
+        },
+        { totalItems: 0, totalPrice: 0 }
       );
 
       return {

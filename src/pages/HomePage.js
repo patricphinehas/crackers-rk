@@ -70,19 +70,6 @@ const HeroContent = styled.div`
   animation: ${fadeUp} 0.9s ease both;
 `;
 
-const HeroBadge = styled.span`
-  display: inline-block;
-  background: rgba(255,200,50,0.15);
-  border: 1px solid rgba(255,200,50,0.4);
-  color: #ffd166;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 5px 16px;
-  border-radius: 20px;
-  margin-bottom: 22px;
-`;
 
 const HeroTitle = styled.h1`
   font-size: clamp(2.4rem, 6vw, 4.2rem);
